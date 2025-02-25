@@ -84,7 +84,23 @@ curl -X POST --data '{
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/info
 ```
 
-2. 블록스카우트 접속
+2. 노드 실행
+
+반드시 블록스카우트 익스플로러 실행 전에 노드를 실행해야 합니다.
+
+```bash
+cd avax-chain
+docker-compose up -d
+```
+
+3. 블록스카우트 익스플로러 실행
+
+```bash
+cd blockscout
+docker-compose up -d
+```
+
+4. 블록스카우트 접속
 
 ```
 http://localhost:4300
