@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  proxy:
+    image: nginx
+    container_name: proxy
+    platform: linux/amd64
+    environment:
+      FRONT_PROXY_PASS: ${FRONT_PROXY_PASS:-http://frontend:3000}
+      BACK_PROXY_PASS: ${BACK_PROXY_PASS:-http://backend:4000}
+    ports:
+      - '4300:4300'
+    volumes:
+      - './proxy:/etc/nginx/templates'
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: '100m'
+        max-file: '5'
+    networks:
+      - avax-chain_avalanche-net
+
+networks:
+  avax-chain_avalanche-net:
+    external: true

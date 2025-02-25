@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  avalanche-node1:
+    image: avaplatform/avalanchego:latest
+    entrypoint: ["/avalanchego/build/avalanchego"]
+    container_name: avalanche-node1
+    networks:
+      avalanche-net:
+        ipv4_address: 172.30.0.101
+    restart: unless-stopped
+    ports:
+      - "9650:9650" # node1 api
+      - "9651:9651/tcp" # node1 staking
+      - "9651:9651/udp"
+      - "9090:9090" # metrics port
+    command: [
+      "--config-file=/root/.avalanchego/configs/config.json"
+    ]
+    volumes:
+      - ./data/node1:/root/.avalanchego
+      - ./configs/node1.json:/root/.avalanchego/configs/config.json
+      - ./chains/node1:/root/.avalanchego/configs/chains
+      - ./staking/node1:/root/.avalanchego/staking
+      - ./genesis.json:/root/.avalanchego/genesis.json
+
+  avalanche-node2:
+    image: avaplatform/avalanchego:latest
+    entrypoint: ["/avalanchego/build/avalanchego"]
+    container_name: avalanche-node2
+    networks:
+      avalanche-net:
+        ipv4_address: 172.30.0.102
+    restart: unless-stopped
+    ports:
+      - "9652:9652" # node2 api
+      - "9653:9653/tcp" # node2 staking
+      - "9653:9653/udp"
+      - "9091:9091" # metrics port
+    command: [
+      "--config-file=/root/.avalanchego/configs/config.json"
+    ]
+    volumes:
+      - ./data/node2:/root/.avalanchego
+      - ./configs/node2.json:/root/.avalanchego/configs/config.json
+      - ./chains/node2:/root/.avalanchego/configs/chains
+      - ./staking/node2:/root/.avalanchego/staking
+      - ./genesis.json:/root/.avalanchego/genesis.json
+
+
+  avalanche-node3:
+    image: avaplatform/avalanchego:latest
+    entrypoint: ["/avalanchego/build/avalanchego"]
+    container_name: avalanche-node3
+    networks:
+      avalanche-net:
+        ipv4_address: 172.30.0.103
+    restart: unless-stopped
+    ports:
+      - "9654:9654" # node3 api
+      - "9655:9655/tcp" # node3 staking
+      - "9655:9655/udp"
+      - "9092:9092" # metrics port
+    command: [
+      "--config-file=/root/.avalanchego/configs/config.json"
+    ]
+    volumes:
+      - ./data/node3:/root/.avalanchego
+      - ./configs/node3.json:/root/.avalanchego/configs/config.json
+      - ./chains/node3:/root/.avalanchego/configs/chains
+      - ./staking/node3:/root/.avalanchego/staking
+      - ./genesis.json:/root/.avalanchego/genesis.json
+
+  avalanche-node4:
+    image: avaplatform/avalanchego:latest
+    entrypoint: ["/avalanchego/build/avalanchego"]
+    container_name: avalanche-node4
+    networks:
+      avalanche-net:
+        ipv4_address: 172.30.0.104
+    restart: unless-stopped
+    ports:
+      - "9656:9656" # node4 api
+      - "9657:9657/tcp" # node4 staking
+      - "9657:9657/udp"
+      - "9093:9093" # metrics port
+    command: [
+      "--config-file=/root/.avalanchego/configs/config.json"
+    ]
+    volumes:
+      - ./data/node4:/root/.avalanchego
+      - ./configs/node4.json:/root/.avalanchego/configs/config.json
+      - ./chains/node4:/root/.avalanchego/configs/chains
+      - ./staking/node4:/root/.avalanchego/staking
+      - ./genesis.json:/root/.avalanchego/genesis.json
+
+networks:
+  avalanche-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+          gateway: 172.30.0.1
+

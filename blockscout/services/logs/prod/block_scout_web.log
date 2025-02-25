@@ -1,0 +1,2 @@
+2025-02-25T15:33:03.900 application=block_scout_web request_id=GCd9VLifXIct2y0AAEtk [error] Raw trace fetching failed: %{code: -32601, message: "the method debug_traceTransaction does not exist/is not available"}
+2025-02-25T15:33:07.175 application=block_scout_web request_id=GCd9VXv28hoba20AAAxo [error] Raw trace fetching failed: %{code: -32601, message: "the method debug_traceTransaction does not exist/is not available"}

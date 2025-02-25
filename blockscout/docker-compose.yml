@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  db-init:
+    extends:
+      file: ./services/db.yml
+      service: db-init
+    networks:
+      - avax-chain_avalanche-net
+
+  db:
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+    extends:
+      file: ./services/db.yml
+      service: db
+    networks:
+      - avax-chain_avalanche-net
+
+  backend:
+    depends_on:
+      - db
+    extends:
+      file: ./services/backend.yml
+      service: backend
+    environment:
+      ETHEREUM_JSONRPC_HTTP_URL: http://172.30.0.104:9656/ext/bc/C/rpc
+      ETHEREUM_JSONRPC_TRACE_URL: http://172.30.0.104:9656/ext/bc/C/rpc
+      ETHEREUM_JSONRPC_WS_URL: ws://172.30.0.104:9656/ext/bc/C/ws
+      TXPOOL_ENABLED: false
+      INDEXER_DISABLE_PENDING_TXS: true
+      CHAIN_ID: '43112'
+    networks:
+      - avax-chain_avalanche-net
+
+  frontend:
+    platform: linux/amd64
+    depends_on:
+      - backend
+    extends:
+      file: ./services/frontend.yml
+      service: frontend
+    networks:
+      - avax-chain_avalanche-net
+
+  proxy:
+    depends_on:
+      - frontend
+    platform: linux/amd64
+    extends:
+      file: ./nginx/nginx.yml
+      service: proxy
+    networks:
+      - avax-chain_avalanche-net
+
+networks:
+  avax-chain_avalanche-net:
+    external: true
