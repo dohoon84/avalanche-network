@@ -1,0 +1,2 @@
+avax-cli/avalanche filter=lfs diff=lfs merge=lfs -text
+blockscout/services/logs/prod/*.log* filter=lfs diff=lfs merge=lfs -text
