@@ -3,3 +3,4 @@
 **/.DS_Store
 **/._.DS_Store
 blockscout/services/logs/prod/*.log*
+blockscout/services/db-data/*
