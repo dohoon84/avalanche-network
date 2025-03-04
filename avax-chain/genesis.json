@@ -21,19 +21,19 @@
     {
       "nodeID": "NodeID-GCpQXzXaVVokZCu89EV41xGQXBAtLyb8Y",
       "rewardAddress": "X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u",
-      "delegationFee": 1000000
+      "delegationFee": 10
     },
     {
       "nodeID": "NodeID-L9mSoaQ4FCg6GgZerg2UV4rJsR1VQTkrz",
       "rewardAddress": "X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u",
-      "delegationFee": 1000000
+      "delegationFee": 10
     },
     {
       "nodeID": "NodeID-7CdcjDJsyJGDtcxk3fWLmeTWMdVdtFgvE",
       "rewardAddress": "X-local18jma8ppw3nhx5r4ap8clazz0dps7rv5u00z96u",
-      "delegationFee": 1000000
+      "delegationFee": 10
     }
   ],
-  "cChainGenesis": "{\"config\":{\"chainId\":43112,\"homesteadBlock\":0,\"daoForkBlock\":0,\"daoForkSupport\":true,\"eip150Block\":0,\"eip150Hash\":\"0x2086799aeebeae135c246c65021c82b4e15a2c451340993aacfd2751886514f0\",\"eip155Block\":0,\"eip158Block\":0,\"byzantiumBlock\":0,\"constantinopleBlock\":0,\"petersburgBlock\":0,\"istanbulBlock\":0,\"muirGlacierBlock\":0,\"apricotPhase1BlockTimestamp\":0,\"apricotPhase2BlockTimestamp\":0},\"nonce\":\"0x0\",\"timestamp\":\"0x5FCB13D0\",\"extraData\":\"0x00\",\"gasLimit\":\"0x5f5e100\",\"difficulty\":\"0x0\",\"mixHash\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"coinbase\":\"0x0000000000000000000000000000000000000000\",\"alloc\":{\"0xB524490E8F947D120d6D55C6CF7911C61F5A7259\":{\"balance\":\"0x295BE96E64066972000000\"}},\"number\":\"0x0\",\"gasUsed\":\"0x0\",\"parentHash\":\"0x0000000000000000000000000000000000000000000000000000000000000000\"}",
+  "cChainGenesis": "{\"config\":{\"chainId\":43112,\"homesteadBlock\":0,\"daoForkBlock\":0,\"daoForkSupport\":true,\"eip150Block\":0,\"eip150Hash\":\"0x2086799aeebeae135c246c65021c82b4e15a2c451340993aacfd2751886514f0\",\"eip155Block\":0,\"eip158Block\":0,\"byzantiumBlock\":0,\"constantinopleBlock\":0,\"petersburgBlock\":0,\"istanbulBlock\":0,\"muirGlacierBlock\":0,\"berlinBlock\":0,\"londonBlock\":0,\"zeroBaseFee\":true,\"apricotPhase1BlockTimestamp\":0,\"apricotPhase2BlockTimestamp\":0},\"nonce\":\"0x0\",\"timestamp\":\"0x5FCB13D0\",\"extraData\":\"0x00\",\"gasLimit\":\"0x1fffffffffffff\",\"difficulty\":\"0x1\",\"mixHash\":\"0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365\",\"coinbase\":\"0x0000000000000000000000000000000000000000\",\"alloc\":{\"0xB524490E8F947D120d6D55C6CF7911C61F5A7259\":{\"balance\":\"0x295BE96E64066972000000\"}},\"number\":\"0x0\",\"gasUsed\":\"0x0\",\"parentHash\":\"0x0000000000000000000000000000000000000000000000000000000000000000\"}",
   "message": "First Successfully private network"
 }
