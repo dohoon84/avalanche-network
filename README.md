@@ -105,7 +105,3 @@ docker-compose up -d
 ```
 http://localhost:4300
 ```
-
-## 라이선스
-
-이 프로젝트는 MIT 라이선스를 따릅니다.
