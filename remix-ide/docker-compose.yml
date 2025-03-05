@@ -15,8 +15,6 @@ services:
     restart: on-failure:5
     volumes:
       - ./config/web3signer:/opt/web3signer/config
-    ports:
-      - 4500:4500/tcp
     networks:
       - avax-chain_avalanche-net
 

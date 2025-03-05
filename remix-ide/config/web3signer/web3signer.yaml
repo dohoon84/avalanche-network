@@ -1,19 +1,12 @@
 eth1.chain-id: 43112
-eth1.downstream-http-host: "host.docker.internal"
+eth1.downstream-http-host: '172.30.0.104'
 eth1.downstream-http-port: 9656
 
-http-listen-host: "0.0.0.0"
-http-listen-port: 9000
-http-cors-origins: ["all"]
+http-listen-host: '0.0.0.0'
+http-listen-port: 4500
+http-cors-origins: ['all']
 
 http-host-allowlist:
-  [
-    "web3signer.aem.io",
-    "localhost",
-    "127.0.0.1",
-    "host.docker.internal",
-    "ide.aem.io",
-    "172.30.0.104",
-  ]
+  ['web3signer.aem.io', 'localhost', '127.0.0.1', 'host.docker.internal', 'ide.aem.io', '172.30.0.104']
 
-key-store-path: "/opt/web3signer/config/keys"
+key-store-path: '/opt/web3signer/config/keys'
