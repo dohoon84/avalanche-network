@@ -1,0 +1,30 @@
+---
+x-web3signerProxy-def: &web3signerProxy-def
+  image: web3signer:latest
+  command:
+    - --config-file=/opt/web3signer/config/web3signer.yaml
+    - eth1
+  ports:
+    - 4500
+
+services:
+  web3signerProxy:
+    <<: *web3signerProxy-def
+    container_name: web3signer
+    user: root
+    restart: on-failure:5
+    volumes:
+      - ./config/web3signer:/opt/web3signer/config
+    networks:
+      - avax-chain_avalanche-net
+
+  ide:
+    image: ide:latest
+    container_name: ide
+    restart: on-failure:5
+    networks:
+      - avax-chain_avalanche-net
+
+networks:
+  avax-chain_avalanche-net:
+    external: true

@@ -25,6 +25,7 @@ add_header Content-Security-Policy "
     style-src 'self' 'unsafe-inline';
 ";
 
+# BlockScout 서버 설정
 server {
     listen 4300;
     listen [::]:4300;
@@ -56,5 +57,72 @@ server {
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection $connection_upgrade;
       proxy_cache_bypass $http_upgrade;
+    }
+}
+
+# Remix IDE 서버 설정
+server {
+    listen 4400;
+    listen [::]:4400;
+    server_name _;
+
+
+    add_header Access-Control-Allow-Origin '*';
+    add_header Access-Control-Allow-Methods "GET, POST, OPTIONS";
+    add_header Access-Control-Allow-Headers "Content-Type, Authorization";
+
+    location / {
+        proxy_pass ${REMIX_PROXY_PASS};
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_cache_bypass $http_upgrade;
+        
+        # WebSocket 지원
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+    }
+}
+
+# Web3Signer 서버 설정
+server {
+    listen 4500;
+    listen [::]:4500;
+    server_name _;
+
+    add_header Content-Security-Policy "
+        default-src 'self' *;
+        connect-src 'self' *;
+        frame-ancestors 'self' *;
+        frame-src 'self' *;
+        img-src 'self' data:;
+        style-src 'self' 'unsafe-inline';
+    ";
+
+    if ($request_method = 'OPTIONS') {
+        return 204;
+    }
+
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    add_header Access-Control-Allow-Origin "*" always;
+    add_header Access-Control-Allow-Methods "GET, POST, OPTIONS";
+    add_header Access-Control-Allow-Headers "Content-Type, Authorization";
+
+    location / {
+        proxy_pass ${WEB3SIGNER_PROXY_PASS};
+
+        # web3signer의 Access-Control-* 헤더 제거
+        proxy_hide_header Access-Control-Allow-Origin;
+        proxy_hide_header Access-Control-Allow-Methods;
+        proxy_hide_header Access-Control-Allow-Headers;
+
+        # 프록시 설정
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }

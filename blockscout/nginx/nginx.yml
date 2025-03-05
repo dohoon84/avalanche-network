@@ -8,8 +8,12 @@ services:
     environment:
       FRONT_PROXY_PASS: ${FRONT_PROXY_PASS:-http://frontend:3000}
       BACK_PROXY_PASS: ${BACK_PROXY_PASS:-http://backend:4000}
+      REMIX_PROXY_PASS: ${REMIX_PROXY_PASS:-http://ide:80}
+      WEB3SIGNER_PROXY_PASS: ${WEB3SIGNER_PROXY_PASS:-http://web3signer:4500}
     ports:
       - '4300:4300'
+      - '4400:4400'
+      - '4500:4500'
     volumes:
       - './proxy:/etc/nginx/templates'
     restart: always
